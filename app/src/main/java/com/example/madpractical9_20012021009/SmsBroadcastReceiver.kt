@@ -10,7 +10,10 @@ class SmsBroadcastReceiver : BroadcastReceiver() {
     interface Listener{
         fun onTextReceived(sPhoneNo: String?, sMsg: String?)
     }
-    var listener : Listener? = null
+    private var listener : Listener? = null
+    fun setListener(lis: Listener){
+        listener = lis
+    }
     override fun onReceive(context: Context, intent: Intent) {
         if(intent.action == Telephony.Sms.Intents.SMS_RECEIVED_ACTION){
             var sPhoneNo = ""
